@@ -15,19 +15,6 @@ public class Main7568 {
             name[i][0] = Integer.parseInt(st.nextToken()); // 몸무게
             name[i][1] = Integer.parseInt(st.nextToken()); // 키
         }
-//        Arrays.sort(name, (o1, o2) -> { // wrong
-//            if(o1[0] == o2[0]){
-//                return Integer.compare(o1[1], o2[1]);
-//            } else {
-//                return Integer.compare(o1[0], o2[0]);
-//            }
-//        });
-//
-//        for (int j=n-1;j>=0;j--){
-//            if(name[j][1]>name[j-1][1]){
-//
-//            }
-//        }
         int[] cnt= new int[n];
         Arrays.fill(cnt,1);
         for (int j = 0; j < n; j++) {
