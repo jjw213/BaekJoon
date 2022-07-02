@@ -55,14 +55,14 @@ public class Main1260 {
         //queue와 다르게 모두 stack에 push 하는게 아니라 값 하나 꺼내고 visited 검사하고
         //false 이면 stack에 담고 true이면 다음 값 꺼내고 하는 식으로
         visited[v - 1] = true; // 현재 노드 번호 v 를 방문했다고 표시
+        stack.add(v);
         for (int i = 0; i < arr[v].size(); i++) {
             if (!visited[arr[v].get(i) - 1]) {
-                stack.add(arr[v].get(i));
                 dfs(arr, visited, arr[v].get(i));
             }
         }
 
-        while (!stack.isEmpty())
+//        while (!stack.isEmpty())
             print_arr.add(stack.pop());
         return;
     }
@@ -77,8 +77,9 @@ public class Main1260 {
         }
 
         visited[v - 1] = true;
-        System.out.print(v + " ");
+        System.out.print(v);
         if (queue.isEmpty()) return;
+        System.out.print(" ");
         v = queue.poll();
         bfs(arr, visited, v);
     }
