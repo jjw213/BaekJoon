@@ -26,8 +26,9 @@ public class Main1660 {
             for (int j = 1; j < 122; j++) {
                 if(dp2[j] > i) break;
                 System.out.println("res["+i+"] = "+res[i]);
-                System.out.println("res["+i+" - "+dp2[j]+"] = "+res[i - dp2[j]]);
+                System.out.println("j = "+j+", res["+i+" - "+dp2[j]+"] = "+res[i - dp2[j]]);
                 res[i] = Math.min(res[i], res[i - dp2[j]]+1);
+                System.out.println("res["+i+"] = "+res[i]);
                 System.out.println("-----------");
             }
         }
