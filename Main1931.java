@@ -34,7 +34,7 @@ public class Main1931 {
             dfs(start, end, room, N,j);
             cnt[j]=best;
             best=0;
-            System.out.println("******************************");
+//            System.out.println("******************************");
         }
         Arrays.sort(cnt);
         System.out.println(cnt[N-1]);
@@ -48,10 +48,10 @@ public class Main1931 {
             int newEnd = room[i].get(1);
             //이 회의의 종료 시간보다 나중에 시작하는 회의가 있으면
             if (newStart >= end) {
-                System.out.println("start : "+start+", end : "+end);
-                System.out.println("newStart : "+newStart+", newEnd : "+newEnd);
-                System.out.println(cnt[j]+", best = "+best);
-                System.out.println("=====================");
+//                System.out.println("start : "+start+", end : "+end);
+//                System.out.println("newStart : "+newStart+", newEnd : "+newEnd);
+//                System.out.println(cnt[j]+", best = "+best);
+//                System.out.println("=====================");
                 dfs(newStart,newEnd,room,N,j);
 
             }
