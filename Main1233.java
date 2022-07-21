@@ -1,40 +1,61 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
-class Main1233 {
-    public static void main(String args[]) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+public class Main1233 {
 
-        int T = 10;
+    public static void main(String[] args) {
 
-        for(int test_case = 1; test_case <= T; test_case++) {
-            int N = Integer.parseInt(br.readLine());
+        Scanner sc = new Scanner(System.in);
 
-            int answer = 1;
+        int s1 = sc.nextInt();
+        int s2 = sc.nextInt();
+        int s3 = sc.nextInt();
 
-            for(int i = 1; i <= N; i++) {
-                StringTokenizer st =  new StringTokenizer(br.readLine());
+        int[] s1Arr = new int[s1];
+        int[] s2Arr = new int[s2];
+        int[] s3Arr = new int[s3];
 
-                st.nextToken(); // 첫 번째 정점 번호는 패스
+        for (int i = 0; i < 40; i++) { // 억지스럽지만 주사위 면은 최대 40개라서 40까지
+            if (s1Arr.length >= i + 1) s1Arr[i] = i + 1;
+            if (s2Arr.length >= i + 1) s2Arr[i] = i + 1;
+            if (s3Arr.length >= i + 1) s3Arr[i] = i + 1;
+        }
 
-                char node = st.nextToken().charAt(0);
+        int sum = 0;
+        int[] sArr = new int[s1 * s2 * s3];
+        int p = 0;
 
-                if(st.hasMoreTokens()) { // 단말 노드가 아닐 때
-                    if(node >= '0' && node <= '9') { // 연산자여야 함, 숫자 X
-                        answer = 0;
-                    }
-                } else { // 단말 노드일 때
-                    if(node < '0' || node > '9') { // 숫자여야 함
-                        answer = 0;
-                    }
+        for (int i = 0; i < s1Arr.length; i++) {
+            for (int j = 0; j < s2Arr.length; j++) {
+                for (int k = 0; k < s3Arr.length; k++) {
+                    sum = s1Arr[i] + s2Arr[j] + s3Arr[k];
+                    sArr[p] = sum;
+                    p++;
                 }
             }
-            sb.append("#" + test_case + " " + answer + "\n");
         }
-        System.out.println(sb.toString());
-    }
 
+        int[] sArr2 = new int[sArr.length];
+
+        for (int i = 0; i < sArr2.length; i++) {
+            sArr2[sArr[i]]++;
+        }
+
+        int res = 0;
+        int q = 0;
+        for (int i = 0; i < sArr2.length; i++) {
+            q = Math.max(q, sArr2[i]);
+        }
+
+        for (int i = 0; i < sArr2.length; i++) {
+            if (q == sArr2[i]) {
+                res = i;
+                break;
+            }
+        }
+
+        System.out.println(res);
+
+        sc.close();
+
+    }
 }
