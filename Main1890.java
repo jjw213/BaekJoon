@@ -11,7 +11,7 @@ public class Main1890 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N =  Integer.parseInt(st.nextToken());
         //입력 받은 N 값으로 N*N 크기 board 2차원 배열 만들기
-        int[][] board = new int[N][N];
+        long[][] board = new long[N][N];
         //board 배열 채워넣기
         for(int i=0;i<N;i++){
             st = new StringTokenizer(br.readLine());
@@ -22,7 +22,7 @@ public class Main1890 {
         dfs(board,0,0);
         System.out.println(cnt);
     }
-    public static void dfs(int[][] board, int row, int col){
+    public static void dfs(long[][] board, int row, int col){
         if( row>=board.length || col>=board[row].length)
             return;
         if( board[row][col] == 0)
@@ -31,7 +31,7 @@ public class Main1890 {
             return;
         }
         //오른쪽 아래 가는 방향 재귀
-        int size = board[row][col];
+        int size = (int) board[row][col];
         dfs(board,row+size,col);
         dfs(board,row,col+size);
 
