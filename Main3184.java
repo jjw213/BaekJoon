@@ -48,12 +48,6 @@ public class Main3184 {
         }
 
         System.out.println(printCntO +" "+printCntV);
-//        for (int i = 0; i < R; i++) {
-//            for (int j = 0; j < C; j++) {
-//                System.out.print(garden[i][j]);
-//            }
-//            System.out.println();
-//        }
     }
 
     public static void dfs(char[][] garden, int row, int col) {
