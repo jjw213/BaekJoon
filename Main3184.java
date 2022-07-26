@@ -15,7 +15,10 @@ public class Main3184 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int R = Integer.parseInt(st.nextToken());
         int C = Integer.parseInt(st.nextToken());
+
+        // 입력받은 R과 C의 크기만큼 garden 2차원 char 배열 생성
         char[][] garden = new char[R][C];
+        // garden 배열 # . o v 채워넣기
         for (int i = 0; i < R; i++) {
             st = new StringTokenizer(br.readLine());
             String str = st.nextToken();
@@ -24,9 +27,9 @@ public class Main3184 {
             }
         }
         // garden 안을 탐색하다가
-        // o(양)을 찾으면
-        // 양이 갈 수 있는 . 과 o, v 그리고 양이 갈 수 없는 #
-        // 빠져나갈 수 있을 때까지 dfs
+        // o(양) 또는 v(늑대)을 찾으면
+        // 앞으로 나아갈 수 있는 . 과 o, v 는 전진, 갈 수 없는 #라면 return
+        // 더이상 앞으로 갈 수 없을 때까지 dfs
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {
                 if(garden[i][j]=='o'||garden[i][j]=='v')
