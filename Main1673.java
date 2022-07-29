@@ -1,48 +1,29 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main1673 {
 
-
-    public static void main(String[] args) {
-
-        // TODO Auto-generated method stub
-
-        Scanner scan = new Scanner(System.in);
-
-
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-
-            int n = scan.nextInt();
-
-            int k = scan.nextInt();
-
-
-            if (n == 0 && k == 0) {
-
+            String input = br.readLine();
+            if (input == null) {
                 break;
-
-            } else {
-
-                int chicken = 0;
-
-                chicken += n;
-
-                while (n >= k) {
-
-                    n = n / k;
-
-                    chicken += n;
-
-                }
-
-                System.out.println(chicken);
-
             }
+            String[] inputs = input.split(" ");
+            int n = Integer.parseInt(inputs[0]);
+            int k = Integer.parseInt(inputs[1]);
+            System.out.println(solve(n, 0, k));
 
         }
-
-
     }
 
-
+    private static int solve(int coupon, int ordered, int k) {
+        if (coupon < k) {
+            return ordered + coupon;
+        }
+        return solve((coupon / k) + (coupon % k), ordered + (coupon - coupon % k), k);
+    }
 }
